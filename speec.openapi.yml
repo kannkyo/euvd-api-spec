@@ -1,0 +1,1057 @@
+openapi: 3.0.4
+info:
+  title: EUVD API - OpenAPI 3.0
+  version: 0.1.0
+  contact:
+    name: kannkyo
+    url: https://github.com/kannkyo/euvd-api-spec
+externalDocs:
+  description: Official API Documentation
+  url: https://euvd.enisa.europa.eu/apidoc
+servers:
+  - url: https://euvdservices.enisa.europa.eu/api/
+tags:
+  - name: Frontpage
+  - name: Scores & Filters
+  - name: Specific Resources
+paths:
+  /lastvulnerabilities:
+    get:
+      summary: Show latest vulnerabilities
+      tags:
+        - Frontpage
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 8
+                items:
+                  type: object
+                  required:
+                    - id
+                    - datePublished
+                    - dateUpdated
+                    - baseScore
+                    - references
+                    - aliases
+                    - epss
+                    - enisaIdProduct
+                    - enisaIdVendor
+                  properties:
+                    id:
+                      type: string
+                      example: "EUVD-2025-15442"
+                    description:
+                      type: string
+                      example: "PNETLab 4.2.10 does not properly sanitize user inputs in its file access mechanisms. This allows attackers to perform directory traversal by manipulating file paths in HTTP requests. Specifically, the application is vulnerable to requests that access sensitive files outside the intended directory."
+                    datePublished:
+                      type: string
+                      example: "May 16, 2025, 12:40:17 PM"
+                    dateUpdated:
+                      type: string
+                      example: "May 16, 2025, 12:59:59 PM"
+                    baseScore:
+                      type: number
+                      example: 8.7
+                      minimum: 0
+                      maximum: 10
+                    baseScoreVersion:
+                      type: string
+                      example: "4.0"
+                    baseScoreVector:
+                      type: string
+                      example: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+                    references:
+                      type: string
+                      example: "https://www.incibe.es/en/incibe-cert/notices/aviso/path-traversal-vulnerability-pnetlab\n"
+                    aliases:
+                      type: string
+                      example: "CVE-2025-40629\n"
+                    assigner:
+                      type: string
+                      example: "INCIBE"
+                    epss:
+                      type: number
+                      example: 0
+                      minimum: 0
+                      maximum: 1
+                    enisaIdProduct:
+                      type: array
+                      minItems: 0
+                      items:
+                        $ref: "#/components/schemas/Product"
+                    enisaIdVendor:
+                      type: array
+                      minItems: 0
+                      items:
+                        $ref: "#/components/schemas/Vendor"
+  /exploitedvulnerabilities:
+    get:
+      summary: Show latest exploited vulnerabilities
+      tags:
+        - Frontpage
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 8
+                items:
+                  type: object
+                  required:
+                    - id
+                    - datePublished
+                    - dateUpdated
+                    - baseScore
+                    - references
+                    - aliases
+                    - epss
+                    - enisaIdProduct
+                    - enisaIdVendor
+                  properties:
+                    id:
+                      type: string
+                      example: "EUVD-2025-15442"
+                    description:
+                      type: string
+                      example: "PNETLab 4.2.10 does not properly sanitize user inputs in its file access mechanisms. This allows attackers to perform directory traversal by manipulating file paths in HTTP requests. Specifically, the application is vulnerable to requests that access sensitive files outside the intended directory."
+                    datePublished:
+                      type: string
+                      example: "May 16, 2025, 12:40:17 PM"
+                    dateUpdated:
+                      type: string
+                      example: "May 16, 2025, 12:59:59 PM"
+                    baseScore:
+                      type: number
+                      example: 8.7
+                      minimum: 0
+                      maximum: 10
+                    baseScoreVersion:
+                      type: string
+                      example: "4.0"
+                    baseScoreVector:
+                      type: string
+                      example: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+                    references:
+                      type: string
+                      example: "https://www.incibe.es/en/incibe-cert/notices/aviso/path-traversal-vulnerability-pnetlab\n"
+                    aliases:
+                      type: string
+                      example: "CVE-2025-40629\n"
+                    assigner:
+                      type: string
+                      example: "INCIBE"
+                    epss:
+                      type: number
+                      example: 0
+                      minimum: 0
+                      maximum: 1
+                    enisaIdProduct:
+                      type: array
+                      minItems: 0
+                      items:
+                        $ref: "#/components/schemas/Product"
+                    enisaIdVendor:
+                      type: array
+                      minItems: 0
+                      items:
+                        $ref: "#/components/schemas/Vendor"
+  /criticalvulnerabilities:
+    get:
+      summary: Show latest critical vulnerabilities
+      tags:
+        - Frontpage
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 8
+                items:
+                  type: object
+                  required:
+                    - id
+                    - datePublished
+                    - dateUpdated
+                    - baseScore
+                    - references
+                    - aliases
+                    - epss
+                    - enisaIdProduct
+                    - enisaIdVendor
+                  properties:
+                    id:
+                      type: string
+                      example: "EUVD-2025-15442"
+                    description:
+                      type: string
+                      example: "PNETLab 4.2.10 does not properly sanitize user inputs in its file access mechanisms. This allows attackers to perform directory traversal by manipulating file paths in HTTP requests. Specifically, the application is vulnerable to requests that access sensitive files outside the intended directory."
+                    datePublished:
+                      type: string
+                      example: "May 16, 2025, 12:40:17 PM"
+                    dateUpdated:
+                      type: string
+                      example: "May 16, 2025, 12:59:59 PM"
+                    baseScore:
+                      type: number
+                      example: 8.7
+                      minimum: 0
+                      maximum: 10
+                    baseScoreVersion:
+                      type: string
+                      example: "4.0"
+                    baseScoreVector:
+                      type: string
+                      example: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+                    references:
+                      type: string
+                      example: "https://www.incibe.es/en/incibe-cert/notices/aviso/path-traversal-vulnerability-pnetlab\n"
+                    aliases:
+                      type: string
+                      example: "CVE-2025-40629\n"
+                    assigner:
+                      type: string
+                      example: "INCIBE"
+                    epss:
+                      type: number
+                      example: 0
+                      minimum: 0
+                      maximum: 1
+                    enisaIdProduct:
+                      type: array
+                      minItems: 0
+                      items:
+                        $ref: "#/components/schemas/Product"
+                    enisaIdVendor:
+                      type: array
+                      minItems: 0
+                      items:
+                        $ref: "#/components/schemas/Vendor"
+  /vulnerabilities:
+    get:
+      summary: Query Vulnerabilities with Flexible Filters
+      tags:
+        - Scores & Filters
+      parameters:
+        - name: fromScore
+          in: query
+          description: Minimum base score (0-10)
+          required: false
+          example: 7.5
+          schema:
+            type: number
+            format: float
+            minimum: 0
+            maximum: 10
+        - name: toScore
+          in: query
+          description: Maximum base score (0-10)
+          required: false
+          example: 10
+          schema:
+            type: number
+            format: float
+            minimum: 0
+            maximum: 10
+        - name: fromEpss
+          in: query
+          description: Minimum EPSS score (0-100)
+          required: false
+          example: 20
+          schema:
+            type: number
+            format: float
+            minimum: 0
+            maximum: 100
+        - name: toEpss
+          in: query
+          description: Maximum EPSS score (0-100)
+          required: false
+          example: 90
+          schema:
+            type: number
+            format: float
+            minimum: 0
+            maximum: 100
+        - name: fromDate
+          in: query
+          description: Start date (YYYY-MM-DD)
+          required: false
+          example: "2023-01-14"
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          description: End date (YYYY-MM-DD)
+          required: false
+          example: "2025-01-14"
+          schema:
+            type: string
+            format: date
+        - name: product
+          in: query
+          description: Filter by product name
+          required: false
+          example: "Windows"
+          schema:
+            type: string
+        - name: vendor
+          in: query
+          description: Filter by vendor name
+          required: false
+          example: "Microsoft"
+          schema:
+            type: string
+        - name: assigner
+          in: query
+          description: Filter by assigner name
+          required: false
+          example: "mitre"
+          schema:
+            type: string
+        - name: exploited
+          in: query
+          description: Filter by exploited status (true/false)
+          required: false
+          example: true
+          schema:
+            type: boolean
+        - name: page
+          in: query
+          description: Page number (0-based)
+          required: false
+          example: 2
+          schema:
+            type: integer
+            minimum: 0
+        - name: text
+          in: query
+          description: Search text (keywords)
+          required: false
+          example: "vulnerability"
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Number of items per page (default 10, max 100)
+          required: false
+          example: 100
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    maxItems: 100
+                    items:
+                      type: object
+                      required:
+                        - id
+                        - datePublished
+                        - dateUpdated
+                        - baseScore
+                        - references
+                        - aliases
+                        - epss
+                        - enisaIdProduct
+                        - enisaIdVendor
+                      properties:
+                        id:
+                          type: string
+                          example: "EUVD-2025-15442"
+                        description:
+                          type: string
+                          example: "PNETLab 4.2.10 does not properly sanitize user inputs in its file access mechanisms. This allows attackers to perform directory traversal by manipulating file paths in HTTP requests. Specifically, the application is vulnerable to requests that access sensitive files outside the intended directory."
+                        datePublished:
+                          type: string
+                          example: "May 16, 2025, 12:40:17 PM"
+                        dateUpdated:
+                          type: string
+                          example: "May 16, 2025, 12:59:59 PM"
+                        baseScore:
+                          type: number
+                          example: 8.7
+                          minimum: 0
+                          maximum: 10
+                        baseScoreVersion:
+                          type: string
+                          example: "4.0"
+                        baseScoreVector:
+                          type: string
+                          example: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+                        references:
+                          type: string
+                          example: "https://www.incibe.es/en/incibe-cert/notices/aviso/path-traversal-vulnerability-pnetlab\n"
+                        aliases:
+                          type: string
+                          example: "CVE-2025-40629\n"
+                        assigner:
+                          type: string
+                          example: "INCIBE"
+                        epss:
+                          type: number
+                          example: 0
+                          minimum: 0
+                          maximum: 1
+                        enisaIdProduct:
+                          type: array
+                          minItems: 0
+                          items:
+                            $ref: "#/components/schemas/Product"
+                        enisaIdVendor:
+                          type: array
+                          minItems: 0
+                          items:
+                            $ref: "#/components/schemas/Vendor"
+                  total:
+                    type: integer
+                    example: 244037
+  /enisaid:
+    get:
+      summary: Show EUVD by ID
+      tags:
+        - Specific Resources
+      parameters:
+        - name: id
+          in: query
+          description: EUVD ID (e.g., EUVD-2025-4893)
+          required: true
+          example: "EUVD-2025-4893"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - datePublished
+                  - dateUpdated
+                  - baseScore
+                  - references
+                  - aliases
+                  - epss
+                  - enisaIdProduct
+                  - enisaIdVendor
+                  - enisaIdVulnerability
+                  - enisaIdAdvisory
+                properties:
+                  id:
+                    type: string
+                    example: "EUVD-2025-15442"
+                  description:
+                    type: string
+                    example: "PNETLab 4.2.10 does not properly sanitize user inputs in its file access mechanisms. This allows attackers to perform directory traversal by manipulating file paths in HTTP requests. Specifically, the application is vulnerable to requests that access sensitive files outside the intended directory."
+                  datePublished:
+                    type: string
+                    example: "May 16, 2025, 12:40:17 PM"
+                  dateUpdated:
+                    type: string
+                    example: "May 16, 2025, 12:59:59 PM"
+                  baseScore:
+                    type: number
+                    example: 8.7
+                    minimum: 0
+                    maximum: 10
+                  baseScoreVersion:
+                    type: string
+                    example: "4.0"
+                  baseScoreVector:
+                    type: string
+                    example: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+                  references:
+                    type: string
+                    example: "https://www.incibe.es/en/incibe-cert/notices/aviso/path-traversal-vulnerability-pnetlab\n"
+                  aliases:
+                    type: string
+                    example: "CVE-2025-40629\n"
+                  assigner:
+                    type: string
+                    example: "INCIBE"
+                  epss:
+                    type: number
+                    example: 0
+                    minimum: 0
+                    maximum: 1
+                  enisaIdProduct:
+                    type: array
+                    minItems: 0
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  enisaIdVendor:
+                    type: array
+                    minItems: 0
+                    items:
+                      $ref: "#/components/schemas/Vendor"
+                  enisaIdVulnerability:
+                    type: array
+                    minItems: 0
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          example: "04a983a1-5988-3a45-84b0-5b0dadeebae8"
+                        vulnerability:
+                          type: object
+                          required:
+                            - id
+                            - datePublished
+                            - dateUpdated
+                            - baseScore
+                            - references
+                            - enisa_id
+                            - epss
+                            - vulnerabilityProduct
+                            - vulnerabilityVendor
+                          properties:
+                            id:
+                              type: string
+                              example: "CVE-2025-4802"
+                            description:
+                              type: string
+                              example: "Untrusted LD_LIBRARY_PATH environment variable vulnerability in the GNU C Library version 2.27 to 2.38 allows attacker controlled loading of dynamically shared library in statically compiled setuid binaries that call dlopen (including internal dlopen calls after setlocale or calls to NSS functions such as getaddrinfo)."
+                            datePublished:
+                              type: string
+                              example: "May 16, 2025, 7:32:50 PM"
+                            dateUpdated:
+                              type: string
+                              example: "May 17, 2025, 8:03:25 AM"
+                            status:
+                              type: string
+                              example: "PUBLISHED"
+                            baseScore:
+                              type: number
+                              example: 9.8
+                              minimum: 0
+                              maximum: 10
+                            baseScoreVersion:
+                              type: string
+                              example: "3.1"
+                            baseScoreVector:
+                              type: string
+                              example: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                            references:
+                              type: string
+                              example: "https://sourceware.org/cgit/glibc/commit/?id=1e18586c5820e329f741d5c710275e165581380e\nhttps://sourceware.org/bugzilla/show_bug.cgi?id=32976\n"
+                            enisa_id:
+                              type: string
+                              example: "EUVD-2025-15553\n"
+                            assigner:
+                              type: string
+                              example: "glibc"
+                            aliases:
+                              type: string
+                              example: "CVE-2025-4802\n"
+                            epss:
+                              type: number
+                              example: 0
+                              minimum: 0
+                              maximum: 1
+                            vulnerabilityProduct:
+                              type: array
+                              minItems: 0
+                              items:
+                                $ref: "#/components/schemas/Product"
+                            vulnerabilityVendor:
+                              type: array
+                              minItems: 0
+                              items:
+                                $ref: "#/components/schemas/Vendor"
+                  enisaIdAdvisory:
+                    type: array
+                    minItems: 0
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          example: "129758d0-efa1-3f4f-b23f-4a0f2de21a93"
+                        advisory:
+                          required:
+                            - id
+                            - description
+                            - summary
+                            - datePublished
+                            - dateUpdated
+                            - baseScore
+                            - references
+                            - aliases
+                            - source
+                            - advisoryProduct
+                          properties:
+                            id:
+                              type: string
+                              example: "cisco-sa-ata19x-multi-RDTEqRsy"
+                            description:
+                              type: string
+                              example: "Cisco ATA 190 Series Analog Telephone Adapter Firmware Vulnerabilities"
+                            summary:
+                              type: string
+                              example: "Multiple vulnerabilities in Cisco ATA 190 Series Analog Telephone Adapter firmware, both on-premises and multiplatform, could allow a remote attacker to delete or change the configuration, execute commands as the root user, conduct a cross-site scripting (XSS) attack against a user of the interface, view passwords, conduct a cross-site request forgery (CSRF) attack, or reboot the device.\r\n\r\nFor more information about these vulnerabilities, see the Details [\"#details\"] section of this advisory.\r\n\r\nCisco has released firmware updates that address these vulnerabilities. There are no workarounds that address these vulnerabilities. However, there is a mitigation that addresses some of these vulnerabilities for Cisco ATA 191 on-premises firmware only.\r\n\r\n"
+                            datePublished:
+                              type: string
+                              example: "Oct 16, 2024, 4:00:00 PM"
+                            dateUpdated:
+                              type: string
+                              example: "Oct 24, 2024, 11:47:37 AM"
+                            baseScore:
+                              type: number
+                              example: 0
+                              minimum: 0
+                              maximum: 10
+                            references:
+                              type: string
+                              example: "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ata19x-multi-RDTEqRsy\n"
+                            aliases:
+                              type: string
+                              example: "CVE-2024-20420\nCVE-2024-20459\nCVE-2024-20460\nCVE-2024-20421\nCVE-2024-20463\nCVE-2024-20458\nCVE-2024-20462\nCVE-2024-20461\n"
+                            source:
+                              $ref: "#/components/schemas/Source"
+                            advisoryProduct:
+                              type: array
+                              minItems: 0
+                              items:
+                                $ref: "#/components/schemas/Product"
+  /vulnerability:
+    get:
+      summary: Show vulnerability by ID
+      tags:
+        - Specific Resources
+      parameters:
+        - name: id
+          in: query
+          description: Vulnerability ID (e.g., CVE-2025-24054)
+          required: true
+          example: "CVE-2025-24054"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - datePublished
+                  - dateUpdated
+                  - baseScore
+                  - references
+                  - enisa_id
+                  - epss
+                  - vulnerabilityProduct
+                  - vulnerabilityVendor
+                properties:
+                  id:
+                    type: string
+                    example: "CVE-2025-4802"
+                  description:
+                    type: string
+                    example: "Untrusted LD_LIBRARY_PATH environment variable vulnerability in the GNU C Library version 2.27 to 2.38 allows attacker controlled loading of dynamically shared library in statically compiled setuid binaries that call dlopen (including internal dlopen calls after setlocale or calls to NSS functions such as getaddrinfo)."
+                  datePublished:
+                    type: string
+                    example: "May 16, 2025, 7:32:50 PM"
+                  dateUpdated:
+                    type: string
+                    example: "May 17, 2025, 8:03:25 AM"
+                  status:
+                    type: string
+                    example: "PUBLISHED"
+                  baseScore:
+                    type: number
+                    example: 9.8
+                    minimum: 0
+                    maximum: 10
+                  baseScoreVersion:
+                    type: string
+                    example: "3.1"
+                  baseScoreVector:
+                    type: string
+                    example: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                  references:
+                    type: string
+                    example: "https://sourceware.org/cgit/glibc/commit/?id=1e18586c5820e329f741d5c710275e165581380e\nhttps://sourceware.org/bugzilla/show_bug.cgi?id=32976\n"
+                  enisa_id:
+                    type: string
+                    example: "EUVD-2025-15553\n"
+                  assigner:
+                    type: string
+                    example: "glibc"
+                  aliases:
+                    type: string
+                    example: "CVE-2025-4802\n"
+                  epss:
+                    type: number
+                    example: 0
+                    minimum: 0
+                    maximum: 1
+                  vulnerabilityProduct:
+                    type: array
+                    minItems: 0
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  vulnerabilityVendor:
+                    type: array
+                    minItems: 0
+                    items:
+                      $ref: "#/components/schemas/Vendor"
+                  vulnerabilityAdvisory:
+                    type: array
+                    minItems: 0
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          example: "129758d0-efa1-3f4f-b23f-4a0f2de21a93"
+                        advisory:
+                          required:
+                            - id
+                            - description
+                            - summary
+                            - datePublished
+                            - dateUpdated
+                            - baseScore
+                            - references
+                            - aliases
+                            - source
+                            - advisoryProduct
+                          properties:
+                            id:
+                              type: string
+                              example: "cisco-sa-ata19x-multi-RDTEqRsy"
+                            description:
+                              type: string
+                              example: "Cisco ATA 190 Series Analog Telephone Adapter Firmware Vulnerabilities"
+                            summary:
+                              type: string
+                              example: "Multiple vulnerabilities in Cisco ATA 190 Series Analog Telephone Adapter firmware, both on-premises and multiplatform, could allow a remote attacker to delete or change the configuration, execute commands as the root user, conduct a cross-site scripting (XSS) attack against a user of the interface, view passwords, conduct a cross-site request forgery (CSRF) attack, or reboot the device.\r\n\r\nFor more information about these vulnerabilities, see the Details [\"#details\"] section of this advisory.\r\n\r\nCisco has released firmware updates that address these vulnerabilities. There are no workarounds that address these vulnerabilities. However, there is a mitigation that addresses some of these vulnerabilities for Cisco ATA 191 on-premises firmware only.\r\n\r\n"
+                            datePublished:
+                              type: string
+                              example: "Oct 16, 2024, 4:00:00 PM"
+                            dateUpdated:
+                              type: string
+                              example: "Oct 24, 2024, 11:47:37 AM"
+                            baseScore:
+                              type: number
+                              example: 0
+                              minimum: 0
+                              maximum: 10
+                            references:
+                              type: string
+                              example: "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ata19x-multi-RDTEqRsy\n"
+                            aliases:
+                              type: string
+                              example: "CVE-2024-20420\nCVE-2024-20459\nCVE-2024-20460\nCVE-2024-20421\nCVE-2024-20463\nCVE-2024-20458\nCVE-2024-20462\nCVE-2024-20461\n"
+                            source:
+                              $ref: "#/components/schemas/Source"
+                            advisoryProduct:
+                              type: array
+                              minItems: 0
+                              items:
+                                $ref: "#/components/schemas/Product"
+  /advisory:
+    get:
+      summary: Show advisory by ID
+      tags:
+        - Specific Resources
+      parameters:
+        - name: id
+          in: query
+          description: Advisory ID (e.g., oxas-adv-2024-0002)
+          required: true
+          example: "oxas-adv-2024-0002"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - description
+                  - summary
+                  - datePublished
+                  - dateUpdated
+                  - baseScore
+                  - references
+                  - aliases
+                  - source
+                  - advisoryProduct
+                properties:
+                  id:
+                    type: string
+                    example: "cisco-sa-ata19x-multi-RDTEqRsy"
+                  description:
+                    type: string
+                    example: "Cisco ATA 190 Series Analog Telephone Adapter Firmware Vulnerabilities"
+                  summary:
+                    type: string
+                    example: "Multiple vulnerabilities in Cisco ATA 190 Series Analog Telephone Adapter firmware, both on-premises and multiplatform, could allow a remote attacker to delete or change the configuration, execute commands as the root user, conduct a cross-site scripting (XSS) attack against a user of the interface, view passwords, conduct a cross-site request forgery (CSRF) attack, or reboot the device.\r\n\r\nFor more information about these vulnerabilities, see the Details [\"#details\"] section of this advisory.\r\n\r\nCisco has released firmware updates that address these vulnerabilities. There are no workarounds that address these vulnerabilities. However, there is a mitigation that addresses some of these vulnerabilities for Cisco ATA 191 on-premises firmware only.\r\n\r\n"
+                  datePublished:
+                    type: string
+                    example: "Oct 16, 2024, 4:00:00 PM"
+                  dateUpdated:
+                    type: string
+                    example: "Oct 24, 2024, 11:47:37 AM"
+                  baseScore:
+                    type: number
+                    example: 0
+                    minimum: 0
+                    maximum: 10
+                  references:
+                    type: string
+                    example: "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ata19x-multi-RDTEqRsy\n"
+                  aliases:
+                    type: string
+                    example: "CVE-2024-20420\nCVE-2024-20459\nCVE-2024-20460\nCVE-2024-20421\nCVE-2024-20463\nCVE-2024-20458\nCVE-2024-20462\nCVE-2024-20461\n"
+                  source:
+                    $ref: "#/components/schemas/Source"
+                  advisoryProduct:
+                    type: array
+                    minItems: 0
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  enisaIdAdvisories:
+                    type: array
+                    minItems: 0
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: "129758d0-efa1-3f4f-b23f-4a0f2de21a93"
+                        enisaId:
+                          required:
+                            - id
+                            - description
+                            - datePublished
+                            - dateUpdated
+                            - baseScore
+                            - baseScoreVersion
+                            - baseScoreVector
+                            - references
+                            - aliases
+                            - assigner
+                            - epss
+                            - enisaIdVendor
+                          properties:
+                            id:
+                              type: string
+                              example: "EUVD-2024-18178"
+                            description:
+                              type: string
+                              example: "A vulnerability in the web-based management interface of Cisco ATA 190 Series Analog Telephone Adapter firmware could allow an unauthenticated, remote attacker to modify the configuration or reboot an affected device.\r\n\r\nThis vulnerability is due to the HTTP server allowing state changes in GET requests. An attacker could exploit this vulnerability by sending a malicious request to the web-based management interface on an affected device. A successful exploit could allow the attacker to make limited modifications to the configuration or reboot the device, resulting in a denial of service (DoS) condition.&nbsp;"
+                            datePublished:
+                              type: string
+                              example: "Oct 16, 2024, 4:16:53 PM"
+                            dateUpdated:
+                              type: string
+                              example: "Oct 31, 2024, 1:08:14 PM"
+                            baseScore:
+                              type: number
+                              example: 5.4
+                              minimum: 0
+                              maximum: 10
+                            baseScoreVersion:
+                              type: string
+                              example: "3.1"
+                            baseScoreVector:
+                              type: string
+                              example: "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+                            references:
+                              type: string
+                              example: "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ata19x-multi-RDTEqRsy\n"
+                            aliases:
+                              type: string
+                              example: "CVE-2024-20463\nGSD-2024-20463\n"
+                            assigner:
+                              type: string
+                              example: "cisco"
+                            epss:
+                              type: number
+                              example: 0.1
+                              minimum: 0
+                              maximum: 1
+                            enisaIdVendor:
+                              type: array
+                              minItems: 0
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    format: uuid
+                                    example: "40bd26b4-ff0b-3a65-a207-2aa2f5490e46"
+                                  vendor:
+                                    required:
+                                      - "name"
+                                    properties:
+                                      name:
+                                        type: string
+                                        example: "Cisco"
+                                    type: object
+                          type: object
+                  vulnerabilityAdvisory:
+                    type: array
+                    minItems: 0
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          example: "63ee6b0c-b082-3fd7-b48c-974cff2a406f"
+                        vulnerability:
+                          required:
+                            - id
+                            - description
+                            - datePublished
+                            - dateUpdated
+                            - status
+                            - baseScore
+                            - baseScoreVersion
+                            - baseScoreVector
+                            - references
+                            - enisa_id
+                            - assigner
+                            - epss
+                            - vulnerabilityVendor
+                          properties:
+                            id:
+                              type: string
+                              example: "CVE-2024-20420"
+                            description:
+                              type: string
+                              example: "A vulnerability in the web-based management interface of Cisco ATA 190 Series Analog Telephone Adapter firmware could allow an authenticated, remote attacker with low privileges to run commands as an Admin user. \r\n\r\nThis vulnerability is due to incorrect authorization verification by the HTTP server. An attacker could exploit this vulnerability by sending a malicious request to the web-based management interface. A successful exploit could allow the attacker to run commands as the Admin user."
+                            datePublished:
+                              type: string
+                              example: "Oct 16, 2024, 4:15:45 PM"
+                            dateUpdated:
+                              type: string
+                              example: "Oct 31, 2024, 1:12:38 PM"
+                            status:
+                              type: string
+                              example: "PUBLISHED"
+                            baseScore:
+                              type: number
+                              example: 5.4
+                            baseScoreVersion:
+                              type: string
+                              example: "3.1"
+                            baseScoreVector:
+                              type: string
+                              example: "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+                            references:
+                              type: string
+                              example: "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ata19x-multi-RDTEqRsy\n"
+                            enisa_id:
+                              type: string
+                              example: "EUVD-2024-18135\n"
+                            assigner:
+                              type: string
+                              example: "cisco"
+                            epss:
+                              type: number
+                              example: 0.08
+                              minimum: 0
+                              maximum: 1
+                            vulnerabilityVendor:
+                              type: array
+                              minItems: 0
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    format: uuid
+                                    example: "5d2d17dc-a5bc-3e1e-9d97-493b840b625d"
+                                  vendor:
+                                    required:
+                                      - "name"
+                                    properties:
+                                      name:
+                                        type: string
+                                        example: "Cisco"
+                                    type: object
+
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - id
+        - product
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "465b1a10-100c-3bc7-902d-574c81e3225c"
+        product:
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              example: "PNETLab"
+          type: object
+        product_version:
+          type: string
+          example: "4.2.10"
+    Vendor:
+      type: object
+      required:
+        - id
+        - vendor
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "5ec19cb1-3a49-3f47-8baa-5c87d21b064d"
+        vendor:
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              example: "PNETLab"
+          type: object
+    Source:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: number
+          example: 10
+        name:
+          type: string
+          example: "csaf_cisco"
