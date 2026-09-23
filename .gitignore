@@ -172,3 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+/.tmp
+
+# graphify
+graphify-out/cost.json
+graphify-out/cache/
